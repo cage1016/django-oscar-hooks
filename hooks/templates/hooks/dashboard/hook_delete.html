@@ -1,0 +1,53 @@
+{% extends 'dashboard/layout.html' %}
+
+{% load i18n %}
+
+{% block title %}
+  {{ title }} | {{ block.super }}
+{% endblock %}
+
+{% block body_class %}{{ block.super }} create-page{% endblock %}
+
+{% block breadcrumbs %}
+  <ul class="breadcrumb">
+    <li>
+      <a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a>
+    </li>
+    <li>
+      <a href="{% url 'hook-list' %}">{% trans "Hooks" %}</a>
+    </li>
+    <li>
+      <a href="{% url 'hook' pk=hook.pk %}">{{ hook.name }}</a>
+    </li>
+    <li class="active">{{ title }}</li>
+  </ul>
+{% endblock %}
+
+{% block headertext %}{{ title }}{% endblock %}
+
+{% block dashboard_content %}
+  <div class="table-header">
+    <h2>{{ title }}</h2>
+  </div>
+  <form action="." method="post" class="well">
+    {% csrf_token %}
+
+    <p>
+      {% blocktrans with title=hook.name %}
+        Delete hook <strong>{{ title }}</strong> - are you sure?
+      {% endblocktrans %}
+
+      <br>
+      {% if hook.hookevent__count > 0 %}
+          {{ hook.name }} have {{ hook.hookevent__count }} hookevent
+      {% endif %}
+    </p>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-danger"
+              data-loading-text="{% trans 'Deleting...' %}" {% if hook.hookevent__count > 0 %}disabled{% endif %}>{% trans "Delete" %}</button>
+      {% trans "or" %}
+      <a href="{% url 'hook-list' %}">{% trans "cancel" %}</a>
+    </div>
+  </form>
+{% endblock %}

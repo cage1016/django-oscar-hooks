@@ -1,0 +1,102 @@
+{% extends 'dashboard/layout.html' %}
+{% load i18n %}
+{% load thumbnail %}
+{% load staticfiles %}
+{% load sorting_tags %}
+{% load render_table from django_tables2 %}
+{% load widget_tweaks %}
+
+{% block title %}
+  {% trans "Hooks Logs" %} | {{ block.super }}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <ul class="breadcrumb">
+    <li>
+      <a href="{% url 'dashboard:index' %}">{% trans "Dashboard" %}</a>
+    </li>
+    <li class="active">
+      Hook Logs
+    </li>
+  </ul>
+{% endblock %}
+
+{% block headertext %}
+  {% trans "Hook Logs" %}
+{% endblock %}
+
+{% block dashboard_content %}
+
+  <div class="well">
+    <form action="." method="get" class="form-inline" id="search_form">
+      {% for field in form %}
+        {% if "order" in field.id_for_label %}
+          {% if field.is_hidden %}
+            {% render_field field class+='form-control' %}
+          {% else %}
+            <span class="form-group{% if field.errors %} has-error{% endif %}">
+                            {{ field.label_tag }}
+                            {% render_field field class+='form-control' %}
+              {% for error in field.errors %}
+                <ul class="error-block">
+                  <li>{{ error }}</li>
+                </ul>
+              {% endfor %}
+                        </span>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      <input type="submit" value="{% trans "Search" %}" class="btn btn-primary"/>
+      <a data-toggle="modal" data-target="#SearchModal" href="#">{% trans "Advanced Search" %}</a>
+    </form>
+
+    {# Search modal, if there are form errors the form is automatically openend #}
+    <div class="modal fade" data-show="true" id="SearchModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3>{% trans "Advanced Search" %}</h3>
+          </div>
+          <form action="." method="get" class="form-horizontal">
+            <div class="modal-body">
+              <div class="container-fluid">
+                {% csrf_token %}
+                {% include "dashboard/partials/form_fields.html" with form=form style='horizontal' %}
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="#" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</a>
+              <button type="submit" class="btn btn-primary"
+                      data-loading-text="{% trans 'Searching...' %}">{% trans "Search" %}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {% if search_filters %}
+      <div class="search-filter-list">
+        <label>Filters:</label>
+        {% for filter in search_filters %}
+          <span class="label label-success">{{ filter }}</span>
+        {% endfor %}
+      </div>
+
+    {% endif %}
+  </div>
+
+
+  {% if hooklogs %}
+    {% block hook_log_list %}
+      <form action="." method="post">
+        {% csrf_token %}
+        {% render_table hooklogs %}
+      </form>
+    {% endblock hook_log_list %}
+  {% else %}
+    <p>{% trans "No hooks found." %}</p>
+  {% endif %}
+
+{% endblock dashboard_content %}

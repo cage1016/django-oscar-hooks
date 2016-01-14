@@ -1,0 +1,30 @@
+# charm
+.idea
+
+# Packaging
+*.pyc
+*.egg-info
+/dist/
+/build/
+
+# Temporary/OS files
+*.swp
+*.swo
+*.*~
+.~lock.*
+*.DS_Store
+.python-version
+
+# Test files
+.coverage
+.noseids
+coverage.xml
+violations.txt
+nosetests.xml
+/.cache/
+/htmlcov/*
+/.tox/*
+
+# sandbox
+sandbox/*.sqlite
+sandbox/public/
