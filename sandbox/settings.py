@@ -9,7 +9,7 @@ TEMPLATE_DEBUG = True
 SQL_DEBUG = True
 
 ADMINS = (
-  # ('Your Name', 'your_email@domain.com'),
+    # ('Your Name', 'your_email@domain.com'),
 )
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -18,14 +18,15 @@ USE_TZ = True
 MANAGERS = ADMINS
 
 DATABASES = {
-  'default': {
-    'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-    'NAME': location('db.sqlite'),  # Or path to database file if using sqlite3.
-    'USER': '',  # Not used with sqlite3.
-    'PASSWORD': '',  # Not used with sqlite3.
-    'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
-    'PORT': '',  # Set to empty string for default. Not used with sqlite3.
-  }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+    # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': location('db.sqlite'),  # Or path to database file if using sqlite3.
+        'USER': '',  # Not used with sqlite3.
+        'PASSWORD': '',  # Not used with sqlite3.
+        'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',  # Set to empty string for default. Not used with sqlite3.
+    }
 }
 ATOMIC_REQUESTS = True
 
@@ -44,24 +45,24 @@ LANGUAGE_CODE = 'en-gb'
 
 gettext_noop = lambda s: s
 LANGUAGES = (
-  ('en-gb', gettext_noop('British English')),
-  ('zh-cn', gettext_noop('Simplified Chinese')),
-  ('nl', gettext_noop('Dutch')),
-  ('it', gettext_noop('Italian')),
-  ('pl', gettext_noop('Polish')),
-  ('ru', gettext_noop('Russian')),
-  ('sk', gettext_noop('Slovak')),
-  ('pt-br', gettext_noop('Brazilian Portuguese')),
-  ('fr', gettext_noop('French')),
-  ('de', gettext_noop('German')),
-  ('ko', gettext_noop('Korean')),
-  ('uk', gettext_noop('Ukrainian')),
-  ('es', gettext_noop('Spanish')),
-  ('da', gettext_noop('Danish')),
-  ('ar', gettext_noop('Arabic')),
-  ('ca', gettext_noop('Catalan')),
-  ('cs', gettext_noop('Czech')),
-  ('el', gettext_noop('Greek')),
+    ('en-gb', gettext_noop('British English')),
+    ('zh-cn', gettext_noop('Simplified Chinese')),
+    ('nl', gettext_noop('Dutch')),
+    ('it', gettext_noop('Italian')),
+    ('pl', gettext_noop('Polish')),
+    ('ru', gettext_noop('Russian')),
+    ('sk', gettext_noop('Slovak')),
+    ('pt-br', gettext_noop('Brazilian Portuguese')),
+    ('fr', gettext_noop('French')),
+    ('de', gettext_noop('German')),
+    ('ko', gettext_noop('Korean')),
+    ('uk', gettext_noop('Ukrainian')),
+    ('es', gettext_noop('Spanish')),
+    ('da', gettext_noop('Danish')),
+    ('ar', gettext_noop('Arabic')),
+    ('ca', gettext_noop('Catalan')),
+    ('cs', gettext_noop('Czech')),
+    ('el', gettext_noop('Greek')),
 )
 
 SITE_ID = 1
@@ -96,36 +97,36 @@ SECRET_KEY = '$)a7n&o80u!6y5t-+jrd3)3!%vh&shg$wqpjpxc!ar&p#!)n1a'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-  'django.template.loaders.filesystem.Loader',
-  'django.template.loaders.app_directories.Loader',
-  #     'django.template.loaders.eggs.Loader',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-  "django.contrib.auth.context_processors.auth",
-  "django.core.context_processors.request",
-  "django.core.context_processors.debug",
-  "django.core.context_processors.i18n",
-  "django.core.context_processors.media",
-  "django.core.context_processors.static",
-  "django.contrib.messages.context_processors.messages",
-  # Oscar specific
-  'oscar.apps.search.context_processors.search_form',
-  'oscar.apps.promotions.context_processors.promotions',
-  'oscar.apps.checkout.context_processors.checkout',
-  'oscar.core.context_processors.metadata',
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.contrib.messages.context_processors.messages",
+    # Oscar specific
+    'oscar.apps.search.context_processors.search_form',
+    'oscar.apps.promotions.context_processors.promotions',
+    'oscar.apps.checkout.context_processors.checkout',
+    'oscar.core.context_processors.metadata',
 )
 
 MIDDLEWARE_CLASSES = (
-  'django.middleware.locale.LocaleMiddleware',
-  'django.middleware.common.CommonMiddleware',
-  'django.contrib.sessions.middleware.SessionMiddleware',
-  'django.middleware.csrf.CsrfViewMiddleware',
-  'django.contrib.auth.middleware.AuthenticationMiddleware',
-  'django.contrib.messages.middleware.MessageMiddleware',
-  'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-  'debug_toolbar.middleware.DebugToolbarMiddleware',
-  'oscar.apps.basket.middleware.BasketMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'oscar.apps.basket.middleware.BasketMiddleware',
 )
 
 INTERNAL_IPS = ('127.0.0.1',)
@@ -135,9 +136,9 @@ ROOT_URLCONF = 'urls'
 from oscar import OSCAR_MAIN_TEMPLATE_DIR
 
 TEMPLATE_DIRS = (
-  location('templates'),
-  os.path.join(OSCAR_MAIN_TEMPLATE_DIR, 'templates'),
-  OSCAR_MAIN_TEMPLATE_DIR,
+    location('templates'),
+    os.path.join(OSCAR_MAIN_TEMPLATE_DIR, 'templates'),
+    OSCAR_MAIN_TEMPLATE_DIR,
 )
 
 # A sample logging configuration. The only tangible logging
@@ -146,81 +147,81 @@ TEMPLATE_DIRS = (
 # See http://docs.djangoproject.com/en/dev/topics/logging for
 # more details on how to customize your logging configuration.
 LOGGING = {
-  'version': 1,
-  'disable_existing_loggers': False,
-  'formatters': {
-    'verbose': {
-      'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
     },
-    'simple': {
-      'format': '%(levelname)s %(message)s'
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+        },
     },
-  },
-  'handlers': {
-    'null': {
-      'level': 'DEBUG',
-      'class': 'django.utils.log.NullHandler',
-    },
-    'console': {
-      'level': 'DEBUG',
-      'class': 'logging.StreamHandler',
-      'formatter': 'verbose'
-    },
-    'mail_admins': {
-      'level': 'ERROR',
-      'class': 'django.utils.log.AdminEmailHandler',
-    },
-  },
-  'loggers': {
-    'django': {
-      'handlers': ['null'],
-      'propagate': True,
-      'level': 'INFO',
-    },
-    'django.request': {
-      'handlers': ['mail_admins'],
-      'level': 'ERROR',
-      'propagate': False,
-    },
-    'oscar.checkout': {
-      'handlers': ['console'],
-      'propagate': True,
-      'level': 'INFO',
-    },
-    'django.db.backends': {
-      'handlers': ['null'],
-      'propagate': False,
-      'level': 'DEBUG',
-    },
-    'paypal.express': {
-      'handlers': ['console'],
-      'propagate': True,
-      'level': 'DEBUG',
-    },
-    'paypal.payflow': {
-      'handlers': ['console'],
-      'propagate': True,
-      'level': 'DEBUG',
-    },
-  }
+    'loggers': {
+        'django': {
+            'handlers': ['null'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'oscar.checkout': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.db.backends': {
+            'handlers': ['null'],
+            'propagate': False,
+            'level': 'DEBUG',
+        },
+        'paypal.express': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'paypal.payflow': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+    }
 }
 
 INSTALLED_APPS = [
-  'django.contrib.auth',
-  'django.contrib.contenttypes',
-  'django.contrib.sessions',
-  'django.contrib.sites',
-  'django.contrib.messages',
-  'django.contrib.admin',
-  'django.contrib.flatpages',
-  'django.contrib.staticfiles',
-  # External apps
-  'django_extensions',
-  'debug_toolbar',
-  # Apps from oscar
-  'compressor',
-  'widget_tweaks',
-  'hooks'
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.admin',
+    'django.contrib.flatpages',
+    'django.contrib.staticfiles',
+    # External apps
+    'django_extensions',
+    'debug_toolbar',
+    # Apps from oscar
+    'compressor',
+    'widget_tweaks',
+    'hooks'
 ]
 
 from oscar import get_core_apps
@@ -228,8 +229,8 @@ from oscar import get_core_apps
 INSTALLED_APPS = INSTALLED_APPS + get_core_apps([])
 
 AUTHENTICATION_BACKENDS = (
-  'oscar.apps.customer.auth_backends.Emailbackend',
-  'django.contrib.auth.backends.ModelBackend',
+    'oscar.apps.customer.auth_backends.Emailbackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 LOGIN_REDIRECT_URL = '/accounts/'
@@ -245,36 +246,36 @@ from django.utils.translation import ugettext_lazy as _
 
 # Haystack settings
 HAYSTACK_CONNECTIONS = {
-  'default': {
-    'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-  },
+    'default': {
+        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
+    },
 }
 
 ########## HOOK CONFIGRATION
 OSCAR_DASHBOARD_NAVIGATION.append(
-    {
-      'label': _('Hooks'),
-      'icon': 'icon-info',
-      'children': [
         {
-          'label': 'Hooks',
-          'url_name': 'hook-list',
-        },
-        {
-          'label': 'Hooks Types',
-          'url_name': 'hook-class-list',
-        },
-        {
-          'label': 'Hooks Logs',
-          'url_name': 'hook-logs',
-        }
-      ]
-    })
+            'label': _('Hooks'),
+            'icon': 'icon-info',
+            'children': [
+                {
+                    'label': 'Hooks',
+                    'url_name': 'hook-list',
+                },
+                {
+                    'label': 'Hooks Types',
+                    'url_name': 'hook-class-list',
+                },
+                {
+                    'label': 'Hooks Logs',
+                    'url_name': 'hook-logs',
+                }
+            ]
+        })
 ########## END HOOK CONFIGRATION
 
 # Put your own sandbox settings into an integration.py modulde (that is ignored
 # by git).
 try:
-  from integration import *  # noqa
+    from integration import *  # noqa
 except ImportError:
-  pass
+    pass
