@@ -13,11 +13,8 @@ class HooksDashboardApplication(Application):
         'hook-delete': (['is_staff'], ['partner.dashboard_access']),
         'hook': (['is_staff'], ['partner.dashboard_access']),
         'hook-create': (['is_staff'], ['partner.dashboard_access']),
-        'hook-class-list': (['is_staff'], ['partner.dashboard_access']),
-        'hook-class-create': (['is_staff'], ['partner.dashboard_access']),
-        'hook-class-update': (['is_staff'], ['partner.dashboard_access']),
-        'hook-class-delete': (['is_staff'], ['partner.dashboard_access']),
         'hook-logs': (['is_staff'], ['partner.dashboard_access']),
+        'signal-type-lookup': (['is_staff'], ['partner.dashboard_access']),
     }
 
     hook_list = get_class('hooks.dashboard.views', 'HookListView')
@@ -25,10 +22,7 @@ class HooksDashboardApplication(Application):
     hook_create_redirect_view = get_class('hooks.dashboard.views', 'HookCreateRedirectView')
     hook_createupdate_view = get_class('hooks.dashboard.views', 'HookCreateUpdateView')
 
-    # hook_class_list_view = get_class('hooks.dashboard.views', 'HookClassListView')
-    # hook_class_create_view = get_class('hooks.dashboard.views', 'HookClassCreateView')
-    # hook_class_update_view = get_class('hooks.dashboard.views', 'HookClassUpdateView')
-    # hook_class_delete_view = get_class('hooks.dashboard.views', 'HookClassDeleteView')
+    signal_type_lookup_view = get_class('hooks.dashboard.views', 'SingalTypeLookupView')
 
     hook_logs_view = get_class('hooks.dashboard.views', 'HookLogsView')
 
@@ -43,15 +37,9 @@ class HooksDashboardApplication(Application):
             url(r'^hooks/create/(?P<hook_class_slug>[\w-]+)/$', self.hook_createupdate_view.as_view(),
                 name='hook-create'),
 
-            # url(r'^hook-types/$', self.hook_class_list_view.as_view(), name='hook-class-list'),
-            # url(r'^hook-type/create/$', self.hook_class_create_view.as_view(), name='hook-class-create'),
-            # url(r'^hook-type/(?P<pk>\d+)/update/$', self.hook_class_update_view.as_view(),
-            #     name='hook-class-update'),
-            # url(r'^hook-type/(?P<pk>\d+)/delete/$', self.hook_class_delete_view.as_view(),
-            #     name='hook-class-delete'),
+            url(r'^signal-type-lookup/$', self.signal_type_lookup_view.as_view(), name='signal-type-lookup'),
 
-            url(r'^logs/$', self.hook_logs_view.as_view(), name='hook-logs')
-
+            url(r'^logs/$', self.hook_logs_view.as_view(), name='hook-logs'),
         ]
         return self.post_process_urls(urlpatterns)
 
