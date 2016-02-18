@@ -7,6 +7,13 @@ install:
 test:
 	./runtests.py
 
+lint:
+	./lint.sh
+
+preflight: lint
+    # Bare minimum of tests to run before pushing to master
+	./runtests.py
+
 sandbox: install
 	pip install -r requirements.sandbox.txt
 	-rm sandbox/db.sqlite
