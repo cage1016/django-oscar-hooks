@@ -2,7 +2,7 @@ from oscar.core.application import Application
 
 
 class HooksApplication(Application):
-  name = 'hooks'
+    name = 'hooks'
 
 
 application = HooksApplication()

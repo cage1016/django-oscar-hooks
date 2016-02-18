@@ -3,9 +3,9 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class HooksConfig(AppConfig):
-  label = 'hooks'
-  name = 'hooks'
-  verbose_name = _('Hooks')
+    label = 'hooks'
+    name = 'hooks'
+    verbose_name = _('Hooks')
 
-  def ready(self):
-    from . import receivers  # noqa
+    def ready(self):
+        from . import receivers  # noqa

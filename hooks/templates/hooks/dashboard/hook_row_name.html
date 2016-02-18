@@ -1,2 +1,2 @@
 {% load django_tables2 %}
-<a href="{% url 'hook' pk=record.pk %}{% querystring %}">{{ value }}</a>
+<a href="{% url 'hook' pk=record.pk %}{% querystring %}">{{ record.user.email }}-{{ value }}</a>

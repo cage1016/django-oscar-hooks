@@ -1,2 +1,2 @@
 class HookException(Exception):
-  pass
+    pass

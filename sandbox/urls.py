@@ -11,14 +11,13 @@ from oscar.app import application
 admin.autodiscover()
 
 urlpatterns = patterns(
-    '',
-    (r'^admin/', include(admin.site.urls)),
-    url(r'^dashboard/hooks/', include(hooks_dashboard.urls)),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
-    url(r'', include(application.urls)),
+        (r'^admin/', include(admin.site.urls)),
+        url(r'^dashboard/hooks/', include(hooks_dashboard.urls)),
+        url(r'^i18n/', include('django.conf.urls.i18n')),
+        url(r'', include(application.urls)),
 )
 
 if settings.DEBUG:
-  urlpatterns += staticfiles_urlpatterns()
-  urlpatterns += static(
-      settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(
+            settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

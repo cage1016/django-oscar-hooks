@@ -38,14 +38,14 @@
       {% endblocktrans %}
 
       <br>
-      {% if hook.hookevent__count > 0 %}
-          {{ hook.name }} have {{ hook.hookevent__count }} hookevent
+      {% if hook.event_count > 0 %}
+          {{ hook.name }} have {{ hook.event_count }} hookevent
       {% endif %}
     </p>
 
     <div class="form-actions">
       <button type="submit" class="btn btn-danger"
-              data-loading-text="{% trans 'Deleting...' %}" {% if hook.hookevent__count > 0 %}disabled{% endif %}>{% trans "Delete" %}</button>
+              data-loading-text="{% trans 'Deleting...' %}" {% if hook.event_count > 0 %}disabled{% endif %}>{% trans "Delete" %}</button>
       {% trans "or" %}
       <a href="{% url 'hook-list' %}">{% trans "cancel" %}</a>
     </div>
