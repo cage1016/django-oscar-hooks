@@ -47,7 +47,7 @@ def load_hook_signals(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('catalogue', '0006_auto_20160218_0654'),
+        ('catalogue', '__first__'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
