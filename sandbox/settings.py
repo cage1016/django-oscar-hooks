@@ -221,7 +221,8 @@ INSTALLED_APPS = [
     # Apps from oscar
     'compressor',
     'widget_tweaks',
-    'hooks'
+    'django_q',
+    'hooks',
 ]
 
 from oscar import get_core_apps
@@ -279,3 +280,17 @@ try:
     from integration import *  # noqa
 except ImportError:
     pass
+
+# redis defaults
+Q_CLUSTER = {
+    'redis': {
+        'host': 'dockerhost',
+        'port': 6379,
+        'db': 0,
+        'password': None,
+        'socket_timeout': None,
+        'charset': 'utf-8',
+        'errors': 'strict',
+        'unix_socket_path': None
+    }
+}

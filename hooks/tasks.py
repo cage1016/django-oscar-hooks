@@ -1,27 +1,19 @@
 import decimal
 import logging
-
 import datetime
 import uuid
-
 import requests
 import json
 import time
 import random
 
-from Queue import Queue
-from threading import Thread
-
 from django.utils.timezone import is_aware
+from django_q import async
+from django.core.mail import send_mail
 
 from oscar.core.loading import get_model
 
 HookLog = get_model('hooks', 'HookLog')
-
-# Set up some global variables
-num_tasks_threads = 2
-
-from django.utils.functional import Promise
 
 
 class MYDjangoJSONEncoder(json.JSONEncoder):
@@ -119,32 +111,23 @@ class Tasks(object):
             hook_log.error_message = e.message
             hook_log.save()
 
-            # TODO: send error mssage to hook error_report_email
+            send_mail('Qnapshop hook Error report',
+                      str(e.message),
+                      'qnapshop@qeek.in',
+                      [self.h.hook.error_report_email], fail_silently=False)
 
 
-# TODO: does any better method to handle with hook send
-def sendHookEnclosures(i, q):
-    while True:
-        item = q.get()
-        t = Tasks(item)
-        t.run(num_retries=3)
-        q.task_done()
+def send_request_handler(obj):
+    t = Tasks(obj)
+    t.run()
 
 
 def run_hook_tasks_job(qs, data):
     headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
-
-    enclosure_queue = Queue()
-    for i in range(num_tasks_threads):
-        worker = Thread(target=sendHookEnclosures, args=(i, enclosure_queue))
-        worker.setDaemon(True)
-        worker.start()
 
     for h in qs:
         data.update(event=h.signal_type.name)
         if h.extra_headers:
             headers.update(h.extra_headers)
 
-        enclosure_queue.put({'h': h, 'data': data, 'headers': headers})
-
-    enclosure_queue.join()
+        task = async('hooks.tasks.send_request_handler', {'h': h, 'data': data, 'headers': headers}, sync=True)

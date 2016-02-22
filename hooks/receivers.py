@@ -63,8 +63,12 @@ def receive_product_viewed(sender, product, user, request, response, **kwargs):
 
     qs = filer_hookevent(product, 1)
     if qs:
+        u = dict(user=user.username)
+        if hasattr(user, 'email'):
+            u.update(email=user.email)
+
         data = {
-            "user": dict(user=user.username, email=user.email),
+            "user": u,
             "product": model_to_dict(product)
         }
         run_hook_tasks_job(qs, data)
