@@ -12,13 +12,13 @@ Basic idea is build a UI that stock-parter can register `place_order` signals to
 
 ## Screenshots
 
-![django-oscar-hooks list](Screenshots/1.png)
+![django-oscar-hooks list](https://raw.githubusercontent.com/cage1016/django-oscar-hooks/master/screenshots/1.png)
 
-![django-oscar-hooks edit hook](Screenshots/2.png)
+![django-oscar-hooks edit hook](https://raw.githubusercontent.com/cage1016/django-oscar-hooks/master/screenshots/2.png)
 
-![django-oscar-hooks edit signals](Screenshots/3.png)
+![django-oscar-hooks edit signals](https://raw.githubusercontent.com/cage1016/django-oscar-hooks/master/screenshots/3.png)
 
-![django-oscar-hooks logs](Screenshots/4.png)
+![django-oscar-hooks logs](https://raw.githubusercontent.com/cage1016/django-oscar-hooks/master/screenshots/4.png)
 
 ## Installation
 
