@@ -22,6 +22,7 @@ setup(
       'django-jsonfield>=0.9.15',
       'slugify>=0.0.1',
       'django-localflavor',
+      'redis>=2.10.5',
       'django_q>=0.7.15'
     ],
     extras_require={
