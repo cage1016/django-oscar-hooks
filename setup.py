@@ -21,7 +21,9 @@ setup(
       'requests>=1.0',
       'django-jsonfield>=0.9.15',
       'slugify>=0.0.1',
-      'django-localflavor'],
+      'django-localflavor',
+      'django_q>=0.7.15'
+    ],
     extras_require={
       'oscar': ["django-oscar>=1.1"]
     },
